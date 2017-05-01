@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -89,15 +90,26 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.attendance) {
             // Handle the camera action
+            Log.d("MainActivity", "onNavigationItemSelected :: attendance "+id);
             fragment = new AttendanceFragment();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.student_list_fragment, new Fragment())
+                    .commit();
         } else if (id == R.id.schedule) {
+            Log.d("MainActivity", "onNavigationItemSelected :: schedule "+id);
             fragment = new SessionListFragment();
             fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
+                    .replace(R.id.fragment_container, new Fragment())
                     .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.student_list_fragment, fragment)
+                    .commit();
+        }else {
+
+            Log.d("MainActivity", "onNavigationItemSelected :: error "+id);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

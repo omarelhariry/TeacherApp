@@ -4,12 +4,16 @@ package com.example.omar.teacherapp;
  * Created by omar on 4/30/2017.
  */
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,15 +32,21 @@ public class AttendanceFragment extends android.app.Fragment {
     private Button btnSubmit;
 
     public void addListenerOnButton() {
-        Log.d("addListenerOnButton", " in");
+//        Log.d("addListenerOnButton", " in");
         spinner2 = (Spinner) getActivity().findViewById(R.id.spinner2);
         btnSubmit = (Button) getActivity().findViewById(R.id.btnSubmit);
 
-        Log.d("addListenerOnButton", " after get");
+//        Log.d("addListenerOnButton", " after get");
         btnSubmit.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                Fragment fragment = new StudentListFragment();
+                FragmentManager fragmentManager = getActivity().getFragmentManager(); // For AppCompat use getSupportFragmentManager
+                fragmentManager.beginTransaction()
+                        .replace(R.id.student_list_fragment, fragment)
+                        .commit();
 
                 Toast.makeText(getActivity(),
                         "OnClickListener : " +
@@ -69,12 +79,11 @@ public class AttendanceFragment extends android.app.Fragment {
         addListenerOnButton();
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        addItemsOnSpinner2();
-//        addListenerOnButton();
-
+        Log.d("AttendanceFragment", "onCreateview 1");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.attendance_view, container, false);
     }
