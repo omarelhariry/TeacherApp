@@ -2,6 +2,7 @@ package com.example.omar.teacherapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,9 +16,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String user_id;
+    private String user_pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//    char[]    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -43,6 +48,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent = getIntent();
+        user_id = intent.getStringExtra("user_id");
+        user_pass = intent.getStringExtra("user_pass");
+
+        TextView tv1 = (TextView) findViewById(R.id.textView_main);
+        tv1.setText("Welcome " + user_id+". Hope you enjoy our app");
     }
 
     @Override
@@ -85,7 +97,9 @@ public class MainActivity extends AppCompatActivity
 
         Fragment fragment;
         FragmentManager fragmentManager = getFragmentManager(); // For AppCompat use getSupportFragmentManager
-
+        TextView tv1 = (TextView) findViewById(R.id.textView_main);
+        tv1.setText(null);
+        
         fragment = null;
 
         if (id == R.id.attendance) {
