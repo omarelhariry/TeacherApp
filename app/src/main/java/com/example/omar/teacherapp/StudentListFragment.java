@@ -57,19 +57,31 @@ public class StudentListFragment extends android.app.Fragment {
 
         //Array list of countries
         ArrayList<Country> countryList = new ArrayList<Country>();
-        Country country = new Country("AFG","Afghanistan",false);
+//        Country country = new Country("AFG","Afghanistan",false);
+//        countryList.add(country);
+//        country = new Country("ALB","Albania",true);
+//        countryList.add(country);
+//        country = new Country("DZA","Algeria",false);
+//        countryList.add(country);
+//        country = new Country("ASM","American Samoa",true);
+//        countryList.add(country);
+//        country = new Country("AND","Andorra",true);
+//        countryList.add(country);
+//        country = new Country("AGO","Angola",false);
+//        countryList.add(country);
+//        country = new Country("AIA","Anguilla",false);
+//        countryList.add(country);
+        Country country = new Country("28-2604","Hariry",true);
         countryList.add(country);
-        country = new Country("ALB","Albania",true);
+        country = new Country("28-6069","Renad",true);
         countryList.add(country);
-        country = new Country("DZA","Algeria",false);
+        country = new Country("28-1463","Dola",true);
         countryList.add(country);
-        country = new Country("ASM","American Samoa",true);
+        country = new Country("ID1","Bad boy 1",false);
         countryList.add(country);
-        country = new Country("AND","Andorra",true);
+        country = new Country("ID2","Bad boy 2",false);
         countryList.add(country);
-        country = new Country("AGO","Angola",false);
-        countryList.add(country);
-        country = new Country("AIA","Anguilla",false);
+        country = new Country("ID3","Bad boy 3",false);
         countryList.add(country);
 
         //create an ArrayAdaptar from the String Array
